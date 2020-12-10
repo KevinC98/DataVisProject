@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script language = "JavaScript">
+         $(document).ready(function() {
+
+         // Create the chart
+            Highcharts.chart('container', {
+              chart: {
+                type: 'column'
+              },
+              title: {
+                text: 'Tweets'
+              },
+              accessibility: {
+                announceNewData: {
+                  enabled: true
+                }
+              },
+              xAxis: {
+                type: 'category'
+              },
+              yAxis: {
+                title: {
+                  text: 'Total Tweets'
+                }
+
+              },
+              legend: {
+                enabled: false
+              },
+              plotOptions: {
+                series: {
+                  borderWidth: 0,
+                  dataLabels: {
+                    enabled: true,
+                    format: '{point.y}'
+                  }
+                }
+              },
+
+              tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> total<br/>'
+              },
+
+              series: [{{ series|safe}}],
+
+            });});
+      </script>
+
+</body>
+</html>
